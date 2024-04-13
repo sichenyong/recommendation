@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员登录页</title>
+    <link rel="stylesheet" href="/static/loginmaterial/logincss.css">
+    <script src="/static/jquery-1.8.2.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-wrapper">
+            <div class="header">登录</div>
+            <div class="form-wrapper">
+                <input type="text" name="username" id="username" placeholder="账号" class="input-item">
+                <input type="password" name="password" id = "password" placeholder="密码" class="input-item">
+                <div class="btn" id="login">登录</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    $('#login').click(function(){
+        if ($("#username").val() == '')
+        {
+            alert("账号不能为空");
+            $("#username").focus();
+            return false;
+        }
+        if ($("#password").val() == '')
+        {
+            alert("密码不能为空");
+            $("#password").focus();
+            return false;
+        }
+        $.ajax({
+            type:'post',
+            url:'{% url "adminLogin" %}',
+            data:{
+                username: $("#username").val(),
+                password: $("#password").val()
+            },
+            dataType:'json',
+            async:true,
+            success: function(data){
+                dlist = data.data
+                if (dlist.status === 1)
+                {
+                    alert("登录成功");
+                    window.location.href = '{% url "adminDashboard" %}';
+                }
+                else if (dlist.status === 0)
+                {
+                    alert("登录失败！请检查账号密码是否正确！");
+                    $("#password").attr("value", "")
+                }
+                else if (dlist.status === 2)
+                {
+                    alert("登录失败！账号不存在");
+                    $("#password").attr("value", "")
+                }
+                else if (dlist.status === 3)
+                {
+                    alert("您没有管理员权限")
+                }
+            }
+        });
+    });
+</script>
+</html>

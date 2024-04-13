@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户信息修改页</title>
+    <link rel="stylesheet" href="/static/loginmaterial/logincss.css">
+    <script src="/static/jquery-1.8.2.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-wrapper">
+            <div style="text-align: center; font-size: large;">个人信息</div>
+            <form class="form-wrapper" method = "post" action="{% url 'update' %}">
+                <input type="text" name = "user_id" value="{{user.user_id}}" hidden>
+                <input type="text" name="username" value="{{user.account}}" class="input-item" disabled>
+                <input type="text" name="password" placeholder="密码" value="{{user.password}}" class="input-item" required>
+                <input type="text" name="nickname" placeholder="昵称" value="{{user.nickname}}" class="input-item" required>
+                <input type="number" name="age" placeholder="年龄" value="{{user.age}}" class="input-item">
+                {% if user.gender == 1 %}
+                <div>
+                    <input type="radio" name="sex" value="1"  checked>男
+                    <input type="radio" name="sex" value="0" >女
+                </div>
+                {% elif user.gender == 0 %}
+                <div>
+                    <input type="radio" name="sex" value="1" >男
+                    <input type="radio" name="sex" value="0" checked >女
+                </div>
+                {% endif %}
+                <input type="tel" name="phone" placeholder="电话" value="{{user.phone}}" class="input-item">
+                <input type="email" name="email" placeholder="邮箱" value="{{user.email}}" class="input-item">
+                <button type="submit" class="btn">保存</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

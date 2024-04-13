@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/static/css/recommend.css">
+    <link rel="stylesheet" href="/static/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/css/modules/code.css">
+    <link rel="stylesheet" href="/static/css/modules/laydate/default/laydate.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <nav>
+            <img src="/static/images/logo.png" class="logo">
+            <ul class="nav-links">
+                <li><a href="{% url 'hotvenues' %}">热门地点</a></li>
+                <li><a href="{% url 'recommend' %}">专属推荐</a></li>
+            </ul>
+            {% if islogin == 0 %}
+            <a href="{% url 'loginPage' %}" class="login-btn">登录/注册</a>
+            {% elif islogin == 1 %}
+            <div class="dropdown">
+                <button class="dropbtn"><img class="dropdownimg" src="/static/images/logo.png">{{user.nickname}}</button>
+                <div class="dropdown-content">
+                    <a href="{% url 'profile' %}">个人信息</a>
+                    <a href="#">设置</a>
+                    <a href="{% url 'logout' %}">退出</a>
+                </div>
+            </div>
+            {% endif %}
+        </nav>
+        <div>
+    </div>
+    <div>
+        {% for dt in data %}
+        <div class="outer" id="venuebox">
+            <input type="text" style="display: none;" value="{{dt.0}}" id="{{dt.7}}">
+            <!-- 此处是图片轮播 -->
+            <div class="inner-left layui-carousel" id="{{dt.5}}">
+                <div carousel-item>
+                    <div><img src="/static/images/default/1.jpg" ></div>
+                    <div><img src="/static/images/default/2.jpg" ></div>
+                    <div><img src="/static/images/default/3.jpg" ></div>
+                    <div><img src="/static/images/default/4.jpg"></div>
+                </div>
+            </div>
+
+            <div class="inner-right-top">
+                <h3 style="text-align: center;">地点名称</h3>
+                <a href="#">
+                    <!--地点名称 -->
+                    {{dt.3}} 
+                </a>
+            </div>
+
+            <div class="inner-right-bottom">
+                <span class="rating">评分</span>
+                <div id="{{dt.1}}"></div>
+                <input id="{{dt.6}}" value="{{dt.2}}" style="display: none;">
+            </div>
+
+            <div class="inner-bottom">
+                <span style="font-family: Arial, Helvetica, sans-serif;">详细介绍:</span>
+                {{dt.4}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+<script src="/static/jquery-1.8.2.min.js"></script>
+<script src="/static/layui.js"></script>
+<script>
+    // 图片轮播
+    layui.use('carousel',function(){
+        var carousel = layui.carousel;
+        for (var i = 1; i <= 10; i ++) {
+            var st = "#pic" + i;
+            carousel.render({
+                elem: st
+                ,width: '75%'
+                ,height: '80%'
+                ,arrow: 'always'
+            });
+        }
+    });
+
+    // 评分
+    layui.use('rate', function(){
+    var rate = layui.rate;
+    //渲染
+        for (var i = 1; i <= 10; i ++){
+            var vanum = "#ratval" + i;
+            var venue_var = "#venue" + i;
+            var venue_id = $(venue_var).val();
+            rate.render({
+                elem: "#star" + i,
+                value: $(vanum).val(),
+                half: true,
+                text: true,
+                choose:function(value){
+                    $.ajax({
+                        type: 'post'
+                        ,url: '{% url "dorating" %}'
+                        ,dataType: 'json'
+                        , data: {
+                            "rating":value,
+                            "venue_id": venue_id,
+                        }
+                        ,async:true
+                    });
+                }
+            });
+        }
+    });
+
+
+</script>
+</html>

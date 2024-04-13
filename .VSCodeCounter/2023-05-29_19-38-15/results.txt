@@ -1,0 +1,117 @@
+Date : 2023-05-29 19:38:15
+Directory : d:\Code\PythonWeb\Recommendation\recsystem
+Total : 60 files,  7513 codes, 197 comments, 620 blanks, all 8330 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| CSS        |          8 |      5,223 |         15 |         10 |      5,248 |
+| HTML       |         16 |      1,179 |          9 |         44 |      1,232 |
+| Python     |         33 |        914 |        169 |        209 |      1,292 |
+| XML        |          1 |        195 |          3 |        357 |        555 |
+| JavaScript |          2 |          2 |          1 |          0 |          3 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                      | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                         |         60 |      7,513 |        197 |        620 |      8,330 |
+| . (Files)                                                                                 |          1 |         15 |          3 |          5 |         23 |
+| adminapp                                                                                  |          8 |        332 |         21 |         63 |        416 |
+| adminapp (Files)                                                                          |          7 |        332 |         21 |         62 |        415 |
+| adminapp\migrations                                                                       |          1 |          0 |          0 |          1 |          1 |
+| loginapp                                                                                  |          8 |        122 |         12 |         25 |        159 |
+| loginapp (Files)                                                                          |          7 |        122 |         12 |         24 |        158 |
+| loginapp\migrations                                                                       |          1 |          0 |          0 |          1 |          1 |
+| recommendapp                                                                              |         10 |        331 |         66 |         63 |        460 |
+| recommendapp (Files)                                                                      |          9 |        331 |         66 |         62 |        459 |
+| recommendapp\migrations                                                                   |          1 |          0 |          0 |          1 |          1 |
+| recsystem                                                                                 |          6 |        114 |         67 |         53 |        234 |
+| static                                                                                    |         11 |      5,420 |         19 |        367 |      5,806 |
+| static (Files)                                                                            |          2 |          2 |          1 |          0 |          3 |
+| static\css                                                                                |          7 |      5,163 |         15 |         10 |      5,188 |
+| static\css (Files)                                                                        |          4 |      5,160 |         15 |         10 |      5,185 |
+| static\css\modules                                                                        |          3 |          3 |          0 |          0 |          3 |
+| static\css\modules (Files)                                                                |          1 |          1 |          0 |          0 |          1 |
+| static\css\modules\laydate                                                                |          1 |          1 |          0 |          0 |          1 |
+| static\css\modules\laydate\default                                                        |          1 |          1 |          0 |          0 |          1 |
+| static\css\modules\layer                                                                  |          1 |          1 |          0 |          0 |          1 |
+| static\css\modules\layer\default                                                          |          1 |          1 |          0 |          0 |          1 |
+| static\font                                                                               |          1 |        195 |          3 |        357 |        555 |
+| static\loginmaterial                                                                      |          1 |         60 |          0 |          0 |         60 |
+| templates                                                                                 |         16 |      1,179 |          9 |         44 |      1,232 |
+| templates (Files)                                                                         |          1 |         46 |          0 |          1 |         47 |
+| templates\admin                                                                           |          9 |        788 |          6 |         29 |        823 |
+| templates\loginapp                                                                        |          2 |        150 |          0 |          3 |        153 |
+| templates\recommend                                                                       |          3 |        157 |          3 |         10 |        170 |
+| templates\user                                                                            |          1 |         38 |          0 |          1 |         39 |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                  | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| d:\Code\PythonWeb\Recommendation\recsystem\adminapp\__init__.py                           | Python     |          0 |          0 |          1 |          1 |
+| d:\Code\PythonWeb\Recommendation\recsystem\adminapp\admin.py                              | Python     |          1 |          1 |          2 |          4 |
+| d:\Code\PythonWeb\Recommendation\recsystem\adminapp\apps.py                               | Python     |          4 |          0 |          3 |          7 |
+| d:\Code\PythonWeb\Recommendation\recsystem\adminapp\migrations\__init__.py                | Python     |          0 |          0 |          1 |          1 |
+| d:\Code\PythonWeb\Recommendation\recsystem\adminapp\models.py                             | Python     |          0 |          0 |          1 |          1 |
+| d:\Code\PythonWeb\Recommendation\recsystem\adminapp\tests.py                              | Python     |          4 |          1 |          2 |          7 |
+| d:\Code\PythonWeb\Recommendation\recsystem\adminapp\urls.py                               | Python     |         26 |          2 |          2 |         30 |
+| d:\Code\PythonWeb\Recommendation\recsystem\adminapp\views.py                              | Python     |        297 |         17 |         51 |        365 |
+| d:\Code\PythonWeb\Recommendation\recsystem\loginapp\__init__.py                           | Python     |          0 |          0 |          1 |          1 |
+| d:\Code\PythonWeb\Recommendation\recsystem\loginapp\admin.py                              | Python     |          1 |          1 |          2 |          4 |
+| d:\Code\PythonWeb\Recommendation\recsystem\loginapp\apps.py                               | Python     |          4 |          0 |          3 |          7 |
+| d:\Code\PythonWeb\Recommendation\recsystem\loginapp\migrations\__init__.py                | Python     |          0 |          0 |          1 |          1 |
+| d:\Code\PythonWeb\Recommendation\recsystem\loginapp\models.py                             | Python     |         15 |          1 |          1 |         17 |
+| d:\Code\PythonWeb\Recommendation\recsystem\loginapp\tests.py                              | Python     |          1 |          1 |          2 |          4 |
+| d:\Code\PythonWeb\Recommendation\recsystem\loginapp\urls.py                               | Python     |         12 |          0 |          1 |         13 |
+| d:\Code\PythonWeb\Recommendation\recsystem\loginapp\views.py                              | Python     |         89 |          9 |         14 |        112 |
+| d:\Code\PythonWeb\Recommendation\recsystem\manage.py                                      | Python     |         15 |          3 |          5 |         23 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recommendapp\__init__.py                       | Python     |          0 |          0 |          1 |          1 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recommendapp\admin.py                          | Python     |          1 |          1 |          2 |          4 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recommendapp\apps.py                           | Python     |          4 |          0 |          3 |          7 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recommendapp\migrations\__init__.py            | Python     |          0 |          0 |          1 |          1 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recommendapp\models.py                         | Python     |         43 |          1 |          6 |         50 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recommendapp\tests.py                          | Python     |          6 |          1 |          1 |          8 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recommendapp\translateapi.py                   | Python     |         38 |          4 |         10 |         52 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recommendapp\urls.py                           | Python     |          8 |          0 |          4 |         12 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recommendapp\utils.py                          | Python     |        100 |         34 |         15 |        149 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recommendapp\views.py                          | Python     |        131 |         25 |         20 |        176 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recsystem\AdminLoginMiddleware.py              | Python     |         18 |          7 |          7 |         32 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recsystem\__init__.py                          | Python     |          0 |          0 |          1 |          1 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recsystem\asgi.py                              | Python     |          4 |          8 |          5 |         17 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recsystem\settings.py                          | Python     |         81 |         28 |         33 |        142 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recsystem\urls.py                              | Python     |          7 |         16 |          2 |         25 |
+| d:\Code\PythonWeb\Recommendation\recsystem\recsystem\wsgi.py                              | Python     |          4 |          8 |          5 |         17 |
+| d:\Code\PythonWeb\Recommendation\recsystem\static\css\layui.css                           | CSS        |      4,899 |          0 |          1 |      4,900 |
+| d:\Code\PythonWeb\Recommendation\recsystem\static\css\modules\code.css                    | CSS        |          1 |          0 |          0 |          1 |
+| d:\Code\PythonWeb\Recommendation\recsystem\static\css\modules\laydate\default\laydate.css | CSS        |          1 |          0 |          0 |          1 |
+| d:\Code\PythonWeb\Recommendation\recsystem\static\css\modules\layer\default\layer.css     | CSS        |          1 |          0 |          0 |          1 |
+| d:\Code\PythonWeb\Recommendation\recsystem\static\css\mycss.css                           | CSS        |         11 |          0 |          0 |         11 |
+| d:\Code\PythonWeb\Recommendation\recsystem\static\css\recommend.css                       | CSS        |        123 |          8 |          6 |        137 |
+| d:\Code\PythonWeb\Recommendation\recsystem\static\css\style.css                           | CSS        |        127 |          7 |          3 |        137 |
+| d:\Code\PythonWeb\Recommendation\recsystem\static\font\iconfont.svg                       | XML        |        195 |          3 |        357 |        555 |
+| d:\Code\PythonWeb\Recommendation\recsystem\static\jquery-1.8.2.min.js                     | JavaScript |          1 |          1 |          0 |          2 |
+| d:\Code\PythonWeb\Recommendation\recsystem\static\layui.js                                | JavaScript |          1 |          0 |          0 |          1 |
+| d:\Code\PythonWeb\Recommendation\recsystem\static\loginmaterial\logincss.css              | CSS        |         60 |          0 |          0 |         60 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\admin\adduserPage.html               | HTML       |        122 |          0 |          7 |        129 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\admin\addvenue.html                  | HTML       |         47 |          0 |          1 |         48 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\admin\adminnav.html                  | HTML       |         43 |          0 |          0 |         43 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\admin\dashboard.html                 | HTML       |        127 |          3 |          6 |        136 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\admin\login.html                     | HTML       |         70 |          0 |          2 |         72 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\admin\sysdashboard.html              | HTML       |        126 |          3 |          3 |        132 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\admin\usereditPage.html              | HTML       |        114 |          0 |          8 |        122 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\admin\venuedashboard.html            | HTML       |         72 |          0 |          1 |         73 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\admin\venueedit.html                 | HTML       |         67 |          0 |          1 |         68 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\index.html                           | HTML       |         46 |          0 |          1 |         47 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\loginapp\login.html                  | HTML       |         71 |          0 |          2 |         73 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\loginapp\register.html               | HTML       |         79 |          0 |          1 |         80 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\recommend\index.html                 | HTML       |        113 |          3 |          7 |        123 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\recommend\venue.html                 | HTML       |         41 |          0 |          1 |         42 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\recommend\venuecommon.html           | HTML       |          3 |          0 |          2 |          5 |
+| d:\Code\PythonWeb\Recommendation\recsystem\templates\user\userprofile.html                | HTML       |         38 |          0 |          1 |         39 |
+| Total                                                                                     |            |      7,513 |        197 |        620 |      8,330 |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

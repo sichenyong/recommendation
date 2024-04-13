@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加用户页面</title>
+    <link rel="stylesheet" href="/static/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/css/modules/code.css">
+    <link rel="stylesheet" href="/static/css/modules/laydate/default/laydate.css">
+</head>
+<body>
+    {% include 'admin/adminnav.html' %}
+    <center>
+      <h1>添加用户</h1>
+    </center>
+    <center>
+        <form class="layui-form" action="{% url 'doadduser' %}" method="post">
+            <div class="layui-form-item">
+                <label class="layui-form-label">账号</label>
+                <div class="layui-input-block">
+                  <input type="text" name="account" required placeholder="账号" 
+                  autocomplete="off" class="layui-input" id="acc">
+                </div>
+            </div>
+            <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-inline">
+                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                class="layui-input" >
+            </div>
+            <div class="layui-form-mid layui-word-aux">密码至少要8位以上</div>
+            </div>
+
+              <div class="layui-form-item">
+                <label class="layui-form-label">昵称</label>
+                <div class="layui-input-inline">
+                  <input type="text" name="nickname" required lay-verify="required" placeholder="请输入昵称" autocomplete="off"
+                   class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">昵称不许为空</div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">年龄</label>
+                <div class="layui-input-inline">
+                  <input type="number" name="age" required lay-verify="required" placeholder="请选择年龄" autocomplete="off"
+                   class="layui-input">
+                </div>
+              </div>
+
+              <div class="layui-form-item">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-block">
+                  <input type="radio" name="gender" value="1" title="男">
+                  <input type="radio" name="gender" value="0" title="女" checked>
+                </div>
+              </div>
+
+              <div class="layui-form-item">
+                <label class="layui-form-label">电话</label>
+                <div class="layui-input-block">
+                  <input type="tel" name="tel"  placeholder="请输入电话号码" 
+                  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱</label>
+                <div class="layui-input-block">
+                  <input type="email" name="email"  placeholder="请输入邮箱" 
+                  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限</label>
+                <div class="layui-input-block">
+                    <select name="type" lay-verify="">
+                        <option value="0" selected>普通用户</option>
+                        <option value="1">管理员</option>
+                    </select> 
+                </div>
+            </div> 
+
+              </div>
+              <div class="layui-form-item">
+                <div class="layui-input-block">
+                  <button class="layui-btn" lay-submit lay-filter="form_submit">立即提交</button>
+                  <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+              </div>
+        </form>
+    </center>
+</body>
+
+<script src="/static/jquery-1.8.2.min.js"></script>
+<script src="/static/layui.js"></script>
+<script>
+    layui.use(['form','layer'], function(){
+        var form = layui.form;
+        var layer = layui.layer;
+        form.on('submit(form_submit)',function(data){
+            account = data.field["account"];
+            var flag = true;
+            $.ajax({
+              type:'post'
+              ,dataType: 'json'
+              ,async:false
+              ,url: "{% url 'userisexist' %}"
+              ,data:{
+                'account':account
+              }
+              ,success:function(data){
+                var data = data.data;
+                if (data["status"] === 1){
+                  // 账号已经存在
+                  layer.alert("警告：账号已经存在!");
+                  $("#acc").attr("value","");
+                  flag = false;
+                }
+              }
+            });
+            console.log(flag)
+            if (flag == false)
+              return false;
+        });
+    });
+</script>
+</html>

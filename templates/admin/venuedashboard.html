@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>景点管理</title>
+    <link rel="stylesheet" href="/static/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/css/modules/code.css">
+    <link rel="stylesheet" href="/static/css/modules/laydate/default/laydate.css">
+</head>
+<body>
+    {% include 'admin/adminnav.html' %}
+    <div>
+      <h1 style="text-align: center;">地点管理</h1>
+    </div>
+    <form class="layui-form" action="{% url 'venuesearch' %}" method="post">
+      <div class="layui-form-item">
+        <label class="layui-form-label">精确查找</label>
+        <div class="layui-input-inline">
+          <input type="text" name="vid" placeholder="请输入景点id" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+          <input type="text" name="vname" placeholder="请输入景点名称" autocomplete="off" class="layui-input">
+        </div>
+        <button type="submit" class="layui-btn">搜索</button>
+        <button type="button" class="layui-btn" onclick="addvenue()">添加景点信息</button>
+    </form>
+
+    <table class="layui-table">
+        <colgroup>
+          <col width="150">
+          <col width="200">
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>地点id</th>
+            <th>地点名称</th>
+            <th>经度</th>
+            <th>纬度</th>
+            <th>地点介绍</th>
+            <th>操作</th>
+          </tr> 
+        </thead>
+        <tbody>
+          {% for venue in venuelist %}
+            <tr>
+              <td>{{venue.venue_id}}</td>
+              <td>{{venue.venue_name}}</td>
+              <td>{{venue.latitude}}</td>
+              <td>{{venue.longitude}}</td>
+              <td>{{venue.introducoty}}</td>
+              <td>
+                <button class="layui-btn"><a href="{% url 'editvenue' venue.venue_id %}">编辑</a></button>
+                <button class="layui-btn layui-btn-danger"><a href="{% url 'delvenue' venue.venue_id %}">删除</a></button>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <br/>
+      <a href="{% url 'venueDashboard' pIndex|add:-1 %}">上一页</a>
+      <a href="{% url 'venueDashboard' pIndex|add:1 %}">下一页</a>
+      <a href="{% url 'venueDashboard' pageNum %}">尾页</a>
+      <span>共{{pageNum}}页</span>
+</body>
+<script>
+  function addvenue(){
+    window.location.href = "{% url 'addvenue' %}"
+  }
+</script>
+</html>

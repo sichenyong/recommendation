@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/jquery-1.8.2.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <img src="/static/images/logo.png" class="logo">
+            <ul class="nav-links">
+                <li><a href="{% url 'hotvenues' %}">热门地点</a></li>
+                <li><a href="{% url 'recommend' %}">专属推荐</a></li>
+            </ul>
+            {% if islogin == 0 %}
+            <a href="{% url 'loginPage' %}" class="login-btn">登录/注册</a>
+            {% elif islogin == 1 %}
+            <div class="dropdown">
+                <button class="dropbtn"><img class="dropdownimg" src="/static/images/logo.png">{{user.nickname}}</button>
+                <div class="dropdown-content">
+                    <a href="{% url 'profile' %}">个人信息</a>
+                    <a href="#">设置</a>
+                    <a href="{% url 'logout' %}">退出</a>
+                </div>
+            </div>
+            {% endif %}
+        </nav>
+
+        <div class="contianer">
+            <h1>Find Your Next Stay</h1>
+            <div class="search-bar">
+                <form action="{% url 'search' %}" method="post">
+                    <div class="Location-input">
+                        <label>Location</label>
+                        <input type="text" name="venue_name" placeholder="where are you going?">
+                    </div>
+                    <button type="submit"><img src="/static/images/search.jfif"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

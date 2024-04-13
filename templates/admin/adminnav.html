@@ -1,0 +1,43 @@
+<div>
+    <ul class="layui-nav layui-big-green layui-nav-child-c">
+      {% if status == 1 %}
+      <li class="layui-nav-item">
+        <a href="{% url 'adminDashboard' %}">用户管理</a>
+        <dl class="layui-nav-child">
+          <dd><a href="{% url 'adminDashboard' %}">普通用户</a></dd>
+          <dd><a href="{% url 'sys1user' %}">管理员</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item layui-this">
+          <a href="{% url 'venueDashboard' 1 %}">地点管理</a>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">我</a>
+          <dl class="layui-nav-child">
+            <dd><a href="{% url 'adminPage' %}">个人信息</a></dd>
+            <dd><a href="">设置</a></dd>
+            <dd><a href="{% url 'adminlogout' %}">退出</a></dd>
+          </dl>
+        </li>
+      {% elif status == 0 %}
+      <li class="layui-nav-item layui-this">
+        <a href="{% url 'adminDashboard' %}">用户管理</a>
+        <dl class="layui-nav-child">
+          <dd><a href="{% url 'adminDashboard' %}">普通用户</a></dd>
+          <dd><a href="{% url 'sys1user' %}">管理员</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item">
+          <a href="{% url 'venueDashboard' 1 %}">地点管理</a>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">我</a>
+          <dl class="layui-nav-child">
+            <dd><a href="{% url 'adminPage' %}">个人信息</a></dd>
+            <dd><a href="">设置</a></dd>
+            <dd><a href="{% url 'adminlogout' %}">退出</a></dd>
+          </dl>
+        </li>
+        {% endif %}
+      </ul>
+</div>

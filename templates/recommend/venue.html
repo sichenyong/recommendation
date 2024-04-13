@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/css/modules/code.css">
+    <link rel="stylesheet" href="/static/css/modules/laydate/default/laydate.css">
+    <link rel="stylesheet" href="/static/css/mycss.css">
+    <title>{{venue.venue_name}}</title>
+</head>
+<body style="background-color: #FAFAFA;">
+    {% include 'recommend/venuecommon.html' %}
+    <div class="mytitle">地点介绍</div>
+    <div><h3>{{venue.introducoty}}</h3></div>
+    <div class="mytitle">相关图片</div>
+
+    <div class="layui-carousel" id="pic">
+        <div carousel-item>
+            <div><img src="{{url}}/1.jpg"></div>
+            <div><img src="{{url}}/2.jpg" ></div>
+            <div><img src="{{url}}/3.jpg"></div>
+            <div><img src="{{url}}/4.jpg"></div>
+        </div>
+    </div>
+</body>
+<script src="/static/jquery-1.8.2.min.js"></script>
+<script src="/static/layui.js"></script>
+<script>
+    // 图片轮播
+    layui.use('carousel',function(){
+        var carousel = layui.carousel;
+        carousel.render({
+            elem: '#pic'
+            ,width: '1000px'
+            ,height: '600px'
+            ,arrow: 'always'
+        });
+    });
+</script>
+</html>

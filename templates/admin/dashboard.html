@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员页面</title>
+    <link rel="stylesheet" href="/static/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/css/modules/code.css">
+    <link rel="stylesheet" href="/static/css/modules/laydate/default/laydate.css">
+</head>
+<body>
+    {% include 'admin/adminnav.html' %}
+    <center>
+        <h1>普通用户管理中心</h1>
+    </center>
+    <fieldset class="table-search-fieldset">
+        <legend>搜索信息</legend>
+        <div style="margin: 10px 10px 10px 10px" id="btn">
+            <form class="layui-form layui-form-pane" action="{% url 'usersearch' %}" method="post">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">账号</label>
+                        <div class="layui-input-inline">
+                            <!--注意此处input标签里的id-->
+                            <input class="layui-input" name="keyword" id="demoReload" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">昵称</label>
+                        <div class="layui-input-inline">
+                            <!--注意此处input标签里的id-->
+                            <input class="layui-input" name="keyword2" id="demoReload2" autocomplete="off">
+                        </div>
+                    </div>
+                    
+                    <div class="layui-inline">
+                        <!--注意此处button标签里的type属性-->
+                        <button type="button" class="layui-btn layui-btn-primary"  data-type="reload" lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+                    </div>
+                    <div class="layui-inline">
+                        <button  type="button" class="layui-btn layui-btn-normal" id="adduser"><i class="layui-icon layui-icon-add-1"></i>添加用户</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>   
+    <div>
+        <table id="usertable" lay-filter = "test"></table>
+    </div>
+</body>
+
+<script src="/static/jquery-1.8.2.min.js"></script>
+<script src="/static/layui.js"></script>
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+        var tableinstance = table.render({
+            elem: '#usertable'
+            , url: '{% url "getsysuser0" %}' // 数据接口
+            , page: true
+            , id: 'usertable'
+            , cols: [[
+                {field: 'user_id', title:'用户id',width:120, sort:true, fixed:'left'}
+                ,{field: 'account', title:'账号',width:150,sort:true}
+                ,{field: 'password', title:'密码',width:100}
+                ,{field: 'nickname', title:'昵称',width:120}
+                ,{field: 'age', title:'年龄',width:80,sort:true}
+                ,{field: 'gender', title:'性别',width:80}
+                ,{field: 'phone', title:'电话',width:150}
+                ,{field: 'email', title:'邮箱',width:100}
+                ,{field: 'addtime', title:'添加时间',width:200}
+                ,{field: 'type', title:'权限',width:80}
+                ,{fixed:'right',title:"操作",width:200,toolbar:"#bar"}
+            ]]
+            , parseData:function(res){
+                return {
+                    "code": 0,
+                    "msg":"",
+                    "count":res.count,
+                    "data":res.users
+                }
+            }
+        });
+        $("#btn .layui-btn").on('click',function(){
+            var kw = $("#demoReload").val()
+            var kw2 = $("#demoReload2").val()
+            tableinstance.reload({
+            url: "{% url 'usersearch' %}"
+            ,method: 'get'
+            ,where: {
+                key: kw
+                ,key2:kw2
+                ,type:0
+            }
+            ,page: {
+                curr:1
+            }
+            , parseData:function(res){
+                return {
+                    "code": 0,
+                    "msg":"",
+                    "count":res.count,
+                    "data":res.users
+                }
+            }
+            });
+        });
+
+
+
+        table.on('tool(test)',function(obj){
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event;
+            console.log(data.user_id)
+            if (layEvent === "update"){
+                window.location.href = "usereditPage/" + data.user_id;
+            }
+            else if (layEvent === "delete"){
+                layer.confirm('确定要删除该用户吗？?', {icon: 3, title:'提示'}, function(index){
+                    
+                    window.location.href = "userdel/" + data.user_id;
+                    layer.close(index);
+                });
+            }
+        });
+    });
+    $("#adduser").on('click',function(){
+        window.location.href = "{% url 'adduserPage' %}";
+    });
+</script>
+<script type="text/html" id="bar">
+    <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="update">编辑</button>
+    <button class="layui-btn layui-btn-danger layui-btn-sm" lay-event="delete">删除</button>
+</script>
+</html>
